@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html ng-app="urpoApp">
   <head>
+    <style>
+      pre {
+          display: block;
+          font-family: monospace;
+          white-space: pre;
+          margin: 1em 0;
+      } 
+    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URPO project</title>
     <!-- Bootstrap 3 css -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.min.js"></script>
     <!-- Angular.js -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
     <!-- Angular-xeditable -->
@@ -16,13 +23,10 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <!-- connect the fake DB -->
+    <script src="angular-xeditable/js/urpo_tempDB.js"></script>
+    <script src='angular-xeditable/js/urpo_tempServer.js'></script>
     
-    <script>
-      $(function() {
-        $( "#dateStart" ).datepicker();
-        $( "#dateEnd" ).datepicker();
-      });
-    </script>
     <!-- app.js -->
     <script src="app.js"></script>
   </head>
@@ -30,24 +34,28 @@
     <h1 style="margin-bottom: 20px">加入/修改專案</h1>
     <div ng-controller="Ctrl">
       <!-- editable element -->
-      <a href="#" editable-text="project.Category">{{ project.Category || "empty" }}</a>
-      <br>
-      <a href="#" editable-text="project.Dept">{{ project.Dept || "empty" }}</a>
-      <br>
-      <a href="#" editable-text="project.Project_Name">{{ project.Project_Name || "empty" }}</a>
-      <br>
-      <a href="#" editable-textarea="project.Project_Description" e-rows="7" e-cols="40">
-        <pre>{{ project.Project_Description || 'no description' }}</pre>
-      </a>
-      <br>
+      <p>種類:
+        <a href="#" editable-text="project.Category">{{ project.Category || "empty" }}</a>
+      </p>
+      <p>部門:
+        <a href="#" editable-text="project.Dept">{{ project.Dept || "empty" }}</a>
+      </p>
+      <p>專案名稱:
+        <a href="#" editable-text="project.Project_Name">{{ project.Project_Name || "empty" }}</a>
+      </p>
+      <p>專案描述:
+        <a href="#" editable-textarea="project.Project_Description" e-rows="7" e-cols="20">
+          <pre>{{ project.Project_Description || 'no description' }}</pre>
+        </a>
+      </p>
+      <p>開始日期: <input type="text" id="dateStart" ng-click="showCalender()"></p>
+      <p>結束日期: <input type="text" id="dateEnd" ng-click="showCalender()"></p>
+      <p>地區:
+        <a href="#" editable-text="project.Region">{{ project.Region || "empty" }}</a>
+      </p>
+      <p>學校:
       <a href="#" editable-text="project.Institution">{{ project.Institution || "empty" }}</a>
-      <br>
-      <p>select date:</p>
-      <p>Start Date: <input type="text" id="dateStart"></p>
-      <br>
-      <p>End Date: <input type="text" id="dateEnd"></p>
-      <br>
-      <a href="#" editable-text="project.Region">{{ project.Region || "empty" }}</a>
-      
+      </p>
+      <a href="#" editable-text="project.Competence">{{ project.Competence || "empty" }}</a>
   </body>
 </html>  
