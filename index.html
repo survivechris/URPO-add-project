@@ -5,14 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URPO project</title>
     <!-- Bootstrap 3 css -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <script src="angular-xeditable/js/ui-bootstrap-custom-tpls-0.13.0.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <!-- Angular.js -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
     <!-- Angular-xeditable -->
     <link href="angular-xeditable/css/xeditable.css" rel="stylesheet">
     <script src="angular-xeditable/js/xeditable.js"></script>
+    <!-- Datepicker -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     
+    <script>
+      $(function() {
+        $( "#datepicker" ).datepicker();
+      });
+    </script>
     <!-- app.js -->
     <script src="app.js"></script>
   </head>
@@ -45,10 +53,13 @@
       </div>
       <br>
       <p>select date:</p>
-      <a href="#" editable-bsdate="project.Estimated_Start_Date" e-datepicker-popup="dd-MMMM-yyyy">
-        {{ (project.Estimated_Start_Date | date:"dd/MM/yyyy") || 'empty' }}
-      </a>
-
+      <p>Start Date: <input type="text" id="datepicker"></p>
+      <br>
+      <p>End Date: <input type="text" id="datepicker"></p>
+      <br>
+      <a href="#" editable-text="project.Institution">{{ project.Institution || "empty" }}</a>
+      <div id="debug" style="margin-top: 30px">
+      {{ project.Institution | json }}
     </div>
   </body>
 </html>  
