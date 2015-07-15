@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="urpoApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URPO project</title>
+    <!-- Bootstrap 3 css -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="angular-xeditable/js/ui-bootstrap-custom-tpls-0.13.0.js"></script>
+    <!-- Angular.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <!-- Angular-xeditable -->
+    <link href="angular-xeditable/css/xeditable.css" rel="stylesheet">
+    <script src="angular-xeditable/js/xeditable.js"></script>
+    
+    <!-- app.js -->
+    <script src="app.js"></script>
+  </head>
+  <body style="padding: 20px">
+    <h1 style="margin-bottom: 20px">加入/修改專案</h1>
+    <div ng-controller="Ctrl">
+      <!-- editable element -->
+      <a href="#" editable-text="project.Category">{{ project.Category || "empty" }}</a>
+      <div id="debug" style="margin-top: 30px">
+      {{ project.Category | json }}
+      </div>
+      <br>
+      <a href="#" editable-text="project.Dept">{{ project.Dept || "empty" }}</a>
+      <div id="debug" style="margin-top: 30px">
+      {{ project.Dept | json }}
+      </div>
+      <br>
+      <a href="#" editable-text="project.Project_Name">{{ Project_Name || "empty" }}</a>
+      <div id="debug" style="margin-top: 30px">
+      {{ project.Project_Name | json }}
+      </div>
+      <br>
+      <a href="#" editable-textarea="project.Project_Description" e-rows="7" e-cols="40">
+        <pre>{{ project.Project_Description || 'no description' }}</pre>
+      </a>
+      <br>
+      <a href="#" editable-text="project.Institution">{{ project.Institution || "empty" }}</a>
+      <div id="debug" style="margin-top: 30px">
+      {{ project.Institution | json }}
+      </div>
+      <br>
+      <p>select date:</p>
+      <a href="#" editable-bsdate="project.Estimated_Start_Date" e-datepicker-popup="dd-MMMM-yyyy">
+        {{ (project.Estimated_Start_Date | date:"dd/MM/yyyy") || 'empty' }}
+      </a>
+
+    </div>
+  </body>
+</html>  
