@@ -5,6 +5,13 @@ app.run(function(editableOptions) {
 });
 
 app.controller('Ctrl', function($scope) {
+
+$scope.showCalender=function(){
+	console.log(GET_LASTUPDATE()[0].edit_state);
+    $( "#dateStart" ).datepicker();
+    $( "#dateEnd" ).datepicker();
+}
+
   $scope.project = {
     Category: 'URPO',
     Dept: 'Life Science',
