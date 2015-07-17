@@ -32,30 +32,75 @@
   </head>
   <body style="padding: 20px">
     <h1 style="margin-bottom: 20px">加入/修改專案</h1>
-    <div ng-controller="Ctrl">
+    <div ng-controller="MainCtrl">
       <!-- editable element -->
-      <p>種類:
-        <a href="#" editable-text="project.Category">{{ project.Category || "empty" }}</a>
-      </p>
-      <p>部門:
-        <a href="#" editable-text="project.Dept">{{ project.Dept || "empty" }}</a>
-      </p>
+      
       <p>專案名稱:
         <a href="#" editable-text="project.Project_Name">{{ project.Project_Name || "empty" }}</a>
       </p>
-      <p>專案描述:
-        <a href="#" editable-textarea="project.Project_Description" e-rows="7" e-cols="20">
-          <pre>{{ project.Project_Description || 'no description' }}</pre>
-        </a>
+      <p>合作學校:
+        <a href="#" editable-text="project.Institution">{{ project.Institution || "empty" }}</a>
       </p>
-      <p>開始日期: <input type="text" id="dateStart" ng-click="showCalender()"></p>
-      <p>結束日期: <input type="text" id="dateEnd" ng-click="showCalender()"></p>
+      <p>開始日期: <input type="text" id="dateStart" ng-click="showCalenderStart()"></p>
+      <p>結束日期: <input type="text" id="dateEnd" ng-click="showCalenderEnd()"></p>
       <p>地區:
         <a href="#" editable-text="project.Region">{{ project.Region || "empty" }}</a>
       </p>
-      <p>學校:
-      <a href="#" editable-text="project.Institution">{{ project.Institution || "empty" }}</a>
+      <p>計畫主持人:
+        <div id="addingHost" ng-controller="AddHostController">
+          <ul>
+            <li ng-repeat="Project_Owner in project.Project_Owners">
+              <input type="text" ng-model="Project_Owner.Name" aria-labelledby="owner_{{$index}}"/>
+              <button ng-click="removeOwner(Project_Owner)"> X </button>
+            </li>
+            <li>[ <button ng-click="addOwner()">add</button> ]</li>
+          </ul>
+        </div>
+        <!--<a href="#" editable-text="project.Project_Owners[0].Name">{{ project.Project_Owners[0].Name|| "empty" }}</a>-->
       </p>
-      <a href="#" editable-text="project.Competence">{{ project.Competence || "empty" }}</a>
+      <p>主要研究人員:
+        <div id="addingInvest" ng-controller="AddInvestController">
+          <ul>
+            <li ng-repeat="Principal_Investigator in project.Principal_Investigators">
+              <input type="text" ng-model="Principal_Investigator.Name" aria-labelledby="investor_{{$index}}"/>
+              <button ng-click="removeInvest(Principal_Investigator)"> X </button>
+            </li>
+            <li>[ <button ng-click="addInvest()">add</button> ]</li>
+          </ul>
+        </div>
+        <!--<a href="#" editable-text="project.Principal_Investigators[0].Name">{{ project.Principal_Investigators[0].Name|| "empty" }}</a>-->
+      </p>
+      <p>分類:
+        <a href="#" editable-text="project.Category">{{ project.Category || "empty" }}</a>
+      </p>
+      <p>部門(改下拉選單):
+        <a href="#" editable-text="project.Dept">{{ project.Dept || "empty" }}</a>
+      </p>
+      <p>技術類別:
+        <a href="#" editable-text="project.Competence">{{ project.Competence || "empty" }}</a>
+      </p>
+      <p>合作模式(改下拉選單):
+        <a href="#" editable-text="project.Collaboration_Model">{{ project.Collaboration_Model || "empty" }}</a>
+      </p>
+      <p>合約階段(改下拉選單):
+        <a href="#" editable-text="project.Project_Agreement_Status">{{ project.Project_Agreement_Status || "empty" }}</a>
+      </p>
+      <p>幣制(改下拉選單):
+        <a href="#" editable-text="project.Currency">{{ project.Currency || "empty" }}</a>
+      </p>
+      <p>預計總金額:
+        <a href="#" editable-text="project.Cash_Funding">{{ project.Cash_Funding || "empty" }}</a>
+      </p>
+      <p>專案描述:
+        <a href="#" editable-textarea="project.Project_Description" e-rows="7" e-cols="80">
+          <pre>{{ project.Project_Description || 'no description' }}</pre>
+        </a>
+      </p>
+      <p>備註/備忘:
+        <a href="#" editable-textarea="project.memo" e-rows="7" e-cols="80">
+          <pre>{{ project.memo || 'no description' }}</pre>
+        </a>
+      </p>
+    </div>
   </body>
 </html>  
